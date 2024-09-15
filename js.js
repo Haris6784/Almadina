@@ -89,6 +89,50 @@ function viewContacts(categoryOrSubcategory) {
     contactList.appendChild(downloadButton);
 }
 
+// Function to search contacts (case-insensitive)
+function searchContacts() {
+    const searchQuery = document.getElementById("search-input").value.toLowerCase(); // Convert search query to lowercase
+    const contactList = document.getElementById("contact-list");
+    contactList.innerHTML = "";  // Clear the list
+
+    // Filter contacts where name or phone includes the search query (case-insensitive)
+    const filteredContacts = contactData.filter(contact => 
+        contact.name.toLowerCase().includes(searchQuery) || contact.phone.includes(searchQuery)
+    );
+
+    if (!filteredContacts.length) {
+        contactList.innerHTML = "No contacts found.";
+        return;
+    }
+
+    // Display the filtered contacts
+    filteredContacts.forEach((contact, index) => {
+        const contactItem = document.createElement("div");
+        contactItem.textContent = `${contact.name} - ${contact.phone}`;
+
+        // Call button
+        const callButton = document.createElement("a");
+        callButton.href = `tel:${contact.phone}`;
+        callButton.textContent = "Call";
+        callButton.classList.add("call-btn");
+        contactItem.appendChild(callButton);
+
+        // Edit button
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        editButton.onclick = () => editContact(index);
+        contactItem.appendChild(editButton);
+
+        // Delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = () => deleteContact(index);
+        contactItem.appendChild(deleteButton);
+
+        contactList.appendChild(contactItem);
+    });
+}
+
 // Function to edit a contact
 function editContact(index) {
     const contact = contactData[index];
