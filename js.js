@@ -62,7 +62,7 @@ function viewContacts(categoryOrSubcategory) {
 
         // Call button
         const callButton = document.createElement("a");
-        callButton.href = `tel:${contact.phone}`;
+        callButton.href = `tel:${contact.phone}`; // This link will open the phone dialer and initiate a call
         callButton.textContent = "Call";
         callButton.classList.add("call-btn"); // Add class for styling
         contactItem.appendChild(callButton);
