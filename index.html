@@ -43,13 +43,6 @@
             </form>
         </section>
 
-        <!-- Search Contacts Section -->
-        <section>
-            <h2>Search Contacts</h2>
-            <input type="text" id="search-input" placeholder="Search contacts...">
-            <button id="search-btn" onclick="searchContacts()">Search</button>
-        </section>
-
         <!-- View Contacts Section -->
         <section>
             <h2>View Contacts</h2>
@@ -64,6 +57,12 @@
                 <button onclick="viewContacts('Dera Shop Keepers Contact')">Dera Shop Keepers Contact</button>
                 <button onclick="viewContacts('Chakok Contacts')">Chakok Contacts</button>
                 <button onclick="viewContacts('Local Contacts')">Local Contacts</button>
+            </div>
+
+            <!-- Dynamic Search Bar for Categories -->
+            <div id="search-section">
+                <input type="text" id="category-search-input" placeholder="Search contacts...">
+                <button onclick="searchCategoryContacts()">Search</button>
             </div>
 
             <!-- Contact List will be dynamically populated here -->
