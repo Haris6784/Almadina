@@ -128,7 +128,12 @@ button img {
 }
 
 /* Search Section */
-#search-input {
+#search-section {
+    display: none;
+    margin-top: 15px;
+}
+
+#category-search-input {
     width: calc(100% - 120px); /* Adjust the size for the button */
     padding: 10px;
     margin-bottom: 15px;
@@ -137,22 +142,10 @@ button img {
     font-size: 16px;
 }
 
-#search-input:focus {
+#category-search-input:focus {
     border-color: #28a745;
     outline: none;
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
-}
-
-/* Adjust the search button */
-#search-btn {
-    background-color: #28a745;
-    padding: 10px 20px;
-    margin-left: 10px;
-    cursor: pointer;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
 }
 
 /* Subcategory Section */
