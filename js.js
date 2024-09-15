@@ -1,5 +1,6 @@
 // Retrieve saved contacts from LocalStorage
 let contactData = JSON.parse(localStorage.getItem('contactData')) || [];
+let currentCategory = null;  // Track current category
 
 // Handle form submission
 document.getElementById("contact-form").addEventListener("submit", function (e) {
@@ -44,6 +45,8 @@ function saveContact(name, phone, category, subcategory) {
 
 // Function to view contacts by category or subcategory
 function viewContacts(categoryOrSubcategory) {
+    currentCategory = categoryOrSubcategory;  // Set current category
+    document.getElementById("search-section").style.display = "block";  // Show search bar
     const contactList = document.getElementById("contact-list");
     contactList.innerHTML = "";  // Clear the list
 
@@ -89,15 +92,16 @@ function viewContacts(categoryOrSubcategory) {
     contactList.appendChild(downloadButton);
 }
 
-// Function to search contacts (case-insensitive)
-function searchContacts() {
-    const searchQuery = document.getElementById("search-input").value.toLowerCase(); // Convert search query to lowercase
+// Function to search contacts within a category (case-insensitive)
+function searchCategoryContacts() {
+    const searchQuery = document.getElementById("category-search-input").value.toLowerCase(); // Convert search query to lowercase
     const contactList = document.getElementById("contact-list");
     contactList.innerHTML = "";  // Clear the list
 
-    // Filter contacts where name or phone includes the search query (case-insensitive)
+    // Filter contacts within the current category based on search query
     const filteredContacts = contactData.filter(contact => 
-        contact.name.toLowerCase().includes(searchQuery) || contact.phone.includes(searchQuery)
+        (contact.category === currentCategory || contact.subcategory === currentCategory) &&
+        (contact.name.toLowerCase().includes(searchQuery) || contact.phone.includes(searchQuery))
     );
 
     if (!filteredContacts.length) {
@@ -157,7 +161,7 @@ function deleteContact(index) {
     contactData.splice(index, 1);
     localStorage.setItem('contactData', JSON.stringify(contactData));
     alert("Contact deleted.");
-    viewContacts(document.getElementById("category").value); // Refresh the list
+    viewContacts(currentCategory); // Refresh the list
 }
 
 // Function to download contacts as a CSV
