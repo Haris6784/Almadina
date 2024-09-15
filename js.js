@@ -55,11 +55,18 @@ function viewContacts(categoryOrSubcategory) {
         return;
     }
 
-    // Display contacts in the list with edit and delete options
+    // Display contacts in the list with call, edit, and delete options
     list.forEach((contact, index) => {
         const contactItem = document.createElement("div");
         contactItem.textContent = `${contact.name} - ${contact.phone}`;
-        
+
+        // Call button
+        const callButton = document.createElement("a");
+        callButton.href = `tel:${contact.phone}`;
+        callButton.textContent = "Call";
+        callButton.classList.add("call-btn"); // Add class for styling
+        contactItem.appendChild(callButton);
+
         // Edit button
         const editButton = document.createElement("button");
         editButton.textContent = "Edit";
