@@ -2,10 +2,24 @@
 let contactData = JSON.parse(localStorage.getItem('contactData')) || [];
 let currentCategory = null;  // Track current category
 
+// Helper function to check if a contact with the same phone number already exists
+function isContactExists(phone) {
+    return contactData.some(contact => contact.phone === phone);
+}
+
+// Function to add unique contacts
+function addUniqueContacts(contacts) {
+    contacts.forEach(contact => {
+        if (!isContactExists(contact.phone)) {
+            contactData.push(contact);  // Add the contact only if it doesn't exist
+        }
+    });
+}
+
 // Predefined contacts to be added under "Executive Contacts"
 const newExecutiveContacts = [
-    { name: "Executive Name 1", phone: "0300-0000001", category: "Executive Contacts", subcategory: "None" },
-    { name: "Executive Name 2", phone: "0300-0000002", category: "Executive Contacts", subcategory: "None" }
+    { name: "Shabhir Qadri", phone: "0312-9832611", category: "Executive Contacts", subcategory: "None" },
+    { name: "Muneer Nake ", phone: "0300-0000002", category: "Executive Contacts", subcategory: "None" }
 ];
 
 // Predefined contacts to be added under "Shop Keepers Contacts"
@@ -126,8 +140,6 @@ const newLocalContacts = [
     { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
     { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
     { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
-
-    
 ];
 
 // Predefined contacts to be added under "Chakok Contacts"
@@ -167,21 +179,28 @@ const newEmployeeContacts = [
     { name: "Ahtesham", phone: "0320-0956752", category: "Employee Contacts", subcategory: "None" }
 ];
 
-// Add predefined Executive, Shop Keepers, Suppliers, Brokers, Dera Shop Keepers, Local, Chakok, and Employee Contacts to the contact data
-newExecutiveContacts.forEach(contact => contactData.push(contact));
-newShopKeepersContacts.forEach(contact => contactData.push(contact));
-newSuppliersContacts.forEach(contact => contactData.push(contact));
-newBrokersContacts.forEach(contact => contactData.push(contact));
-newDeraShopKeepersContacts.forEach(contact => contactData.push(contact));
-newLocalContacts.forEach(contact => contactData.push(contact));
-newChakokContacts.forEach(contact => contactData.push(contact));
-newEmployeeContacts.forEach(contact => contactData.push(contact));
+// Predefined contacts to be added under "Drivers Contacts"
+const newDriversContacts = [
+    { name: "Driver Name 1", phone: "0300-6666661", category: "Drivers Contacts", subcategory: "None" },
+    { name: "Driver Name 2", phone: "0300-6666662", category: "Drivers Contacts", subcategory: "None" }
+];
+
+// Now add the unique contacts for all categories
+addUniqueContacts(newExecutiveContacts);
+addUniqueContacts(newShopKeepersContacts);
+addUniqueContacts(newSuppliersContacts);
+addUniqueContacts(newBrokersContacts);
+addUniqueContacts(newDeraShopKeepersContacts);
+addUniqueContacts(newLocalContacts);
+addUniqueContacts(newChakokContacts);
+addUniqueContacts(newEmployeeContacts);
+addUniqueContacts(newDriversContacts);  // Add Drivers Contacts
 
 // Save the updated contact list to LocalStorage
 localStorage.setItem('contactData', JSON.stringify(contactData));
 
 // Optional: Alert to confirm contacts were added
-alert("Predefined contacts for all categories added.");
+alert("Unique contacts added for all categories.");
 
 // Handle form submission
 document.getElementById("contact-form").addEventListener("submit", function (e) {
@@ -192,8 +211,12 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
     const category = document.getElementById("category").value;
     const subcategory = category === "Shop Keepers Contacts" ? document.getElementById("subcategory").value : "None";
 
-    // Save the contact
-    saveContact(name, phone, category, subcategory);
+    // Check if the contact already exists
+    if (!isContactExists(phone)) {
+        saveContact(name, phone, category, subcategory);
+    } else {
+        alert("This contact already exists.");
+    }
 
     // Clear the form fields after submission
     document.getElementById("name").value = '';
@@ -214,24 +237,18 @@ document.getElementById("category").addEventListener("change", function () {
 
 // Function to save the contact to LocalStorage
 function saveContact(name, phone, category, subcategory) {
-    // Add the new contact to the array
     contactData.push({ name, phone, category, subcategory });
-    
-    // Save the updated contact list to LocalStorage
     localStorage.setItem('contactData', JSON.stringify(contactData));
-
-    // Display an alert confirming the contact is saved
     alert(`Contact saved: ${name}, ${phone}, ${category}, ${subcategory}`);
 }
 
 // Function to view contacts by category or subcategory
 function viewContacts(categoryOrSubcategory) {
-    currentCategory = categoryOrSubcategory;  // Set current category
-    document.getElementById("search-section").style.display = "block";  // Show search bar
+    currentCategory = categoryOrSubcategory;
+    document.getElementById("search-section").style.display = "block";
     const contactList = document.getElementById("contact-list");
-    contactList.innerHTML = "";  // Clear the list
+    contactList.innerHTML = "";
 
-    // Filter contacts by category or subcategory
     const list = contactData.filter(contact => contact.category === categoryOrSubcategory || contact.subcategory === categoryOrSubcategory);
 
     if (!list.length) {
@@ -239,17 +256,23 @@ function viewContacts(categoryOrSubcategory) {
         return;
     }
 
-    // Display contacts in the list with call, edit, and delete options
     list.forEach((contact, index) => {
         const contactItem = document.createElement("div");
         contactItem.textContent = `${contact.name} - ${contact.phone}`;
 
         // Call button
         const callButton = document.createElement("a");
-        callButton.href = `tel:${contact.phone}`; // This link will open the phone dialer and initiate a call
+        callButton.href = `tel:${contact.phone}`;
         callButton.textContent = "Call";
-        callButton.classList.add("call-btn"); // Add class for styling
+        callButton.classList.add("call-btn");
         contactItem.appendChild(callButton);
+
+        // WhatsApp button
+        const whatsappButton = document.createElement("a");
+        whatsappButton.href = `https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`;
+        whatsappButton.textContent = "WhatsApp";
+        whatsappButton.classList.add("whatsapp-btn");
+        contactItem.appendChild(whatsappButton);
 
         // Edit button
         const editButton = document.createElement("button");
@@ -273,13 +296,13 @@ function viewContacts(categoryOrSubcategory) {
     contactList.appendChild(downloadButton);
 }
 
-// Function to search contacts within a category (case-insensitive)
+// Other functions (searchCategoryContacts, editContact, deleteContact, downloadContacts) remain the same...
+// Function to search contacts within a category
 function searchCategoryContacts() {
-    const searchQuery = document.getElementById("category-search-input").value.toLowerCase(); // Convert search query to lowercase
+    const searchQuery = document.getElementById("category-search-input").value.toLowerCase();
     const contactList = document.getElementById("contact-list");
-    contactList.innerHTML = "";  // Clear the list
+    contactList.innerHTML = "";
 
-    // Filter contacts within the current category based on search query
     const filteredContacts = contactData.filter(contact => 
         (contact.category === currentCategory || contact.subcategory === currentCategory) &&
         (contact.name.toLowerCase().includes(searchQuery) || contact.phone.includes(searchQuery))
@@ -290,7 +313,6 @@ function searchCategoryContacts() {
         return;
     }
 
-    // Display the filtered contacts
     filteredContacts.forEach((contact, index) => {
         const contactItem = document.createElement("div");
         contactItem.textContent = `${contact.name} - ${contact.phone}`;
@@ -301,6 +323,13 @@ function searchCategoryContacts() {
         callButton.textContent = "Call";
         callButton.classList.add("call-btn");
         contactItem.appendChild(callButton);
+
+        // WhatsApp button
+        const whatsappButton = document.createElement("a");
+        whatsappButton.href = `https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`;
+        whatsappButton.textContent = "WhatsApp";
+        whatsappButton.classList.add("whatsapp-btn");
+        contactItem.appendChild(whatsappButton);
 
         // Edit button
         const editButton = document.createElement("button");
@@ -342,7 +371,7 @@ function deleteContact(index) {
     contactData.splice(index, 1);
     localStorage.setItem('contactData', JSON.stringify(contactData));
     alert("Contact deleted.");
-    viewContacts(currentCategory); // Refresh the list
+    viewContacts(currentCategory);
 }
 
 // Function to download contacts as a CSV
@@ -358,5 +387,5 @@ function downloadContacts(categoryOrSubcategory, list) {
     link.setAttribute("download", `${categoryOrSubcategory}-contacts.csv`);
     document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);  // Clean up
+    document.body.removeChild(link);
 }
