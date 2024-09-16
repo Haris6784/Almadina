@@ -186,15 +186,15 @@ const newDriversContacts = [
 ];
 
 // Now add the unique contacts for all categories
-addUniqueContacts(newExecutiveContacts);
-addUniqueContacts(newShopKeepersContacts);
-addUniqueContacts(newSuppliersContacts);
-addUniqueContacts(newBrokersContacts);
-addUniqueContacts(newDeraShopKeepersContacts);
-addUniqueContacts(newLocalContacts);
-addUniqueContacts(newChakokContacts);
-addUniqueContacts(newEmployeeContacts);
-addUniqueContacts(newDriversContacts);  // Add Drivers Contacts
+//addUniqueContacts(newExecutiveContacts);
+//addUniqueContacts(newShopKeepersContacts);
+//addUniqueContacts(newSuppliersContacts);
+//addUniqueContacts(newBrokersContacts);
+//addUniqueContacts(newDeraShopKeepersContacts);
+//addUniqueContacts(newLocalContacts);
+//addUniqueContacts(newChakokContacts);
+//addUniqueContacts(newEmployeeContacts);
+//addUniqueContacts(newDriversContacts);  // Add Drivers Contacts
 
 // Save the updated contact list to LocalStorage
 localStorage.setItem('contactData', JSON.stringify(contactData));
