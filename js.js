@@ -22,8 +22,9 @@ const newSuppliersContacts = [
 
 // Predefined contacts to be added under "Brokers Numbers"
 const newBrokersContacts = [
-    { name: "Broker Name 1", phone: "0300-3333331", category: "Brokers Numbers", subcategory: "None" },
-    { name: "Broker Name 2", phone: "0300-3333332", category: "Brokers Numbers", subcategory: "None" }
+    { name: "Ramzan Shaloli Jazz", phone: "0301-7150540", category: "Brokers Numbers", subcategory: "None" },
+    { name: "Ramzan Shaloli Telenor", phone: "0346-7779039", category: "Brokers Numbers", subcategory: "None" },
+    { name: "Rana Habib Mithu", phone: "0300-2667626", category: "Brokers Numbers", subcategory: "None" }
 ];
 
 // Predefined contacts to be added under "Dera Shop Keepers Contact"
@@ -34,8 +35,99 @@ const newDeraShopKeepersContacts = [
 
 // Predefined contacts to be added under "Local Contacts"
 const newLocalContacts = [
-    { name: "Local Contact 1", phone: "0300-5555551", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
-    { name: "Local Contact 2", phone: "0300-5555552", category: "Shop Keepers Contacts", subcategory: "Local Contacts" }
+    { name: "Almadina Poultry New Colony", phone: "0318-6837134", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi jarnaili Road", phone: "0316-1490086", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Malik Fiaz Poultry new colony", phone: "0333-6836279", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Muhammad Ajmal urf Mana Chishti", phone: "0304-6880336", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Akhtar CHP", phone: "0331-7608676", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Sohail Sialvi kacha paka", phone: "0302-4934474", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Fazli Almasoom ada", phone: "0310-6525386", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Zafar Almasoom ada", phone: "0300-4755899", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Foji Ali / Kawal Kalyar Chok", phone: "0307-7140250", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Aziz ur rehman Dhaba Chok", phone: "0314-6868366", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Raja Mushtaq Sadeeqi bazar", phone: "0307-8899966", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Imran Qasai rail bazar", phone: "0334-6138230", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Ikram urf akna watto chok", phone: "0333-6822737", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Iltaf Temoor watto chok", phone: "0307-6755663", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Qasim C2 colony", phone: "0301-6358503", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Afzal Habib Mat", phone: "0340-3754618", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Amir 4 No chungi ", phone: "0302-1061941", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Saif ullah wapda", phone: "0305-7372689", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Bismillah C2 colony", phone: "0310-7676853", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Sajid CNG", phone: "0305-2134763", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Irfan Quraishi chok", phone: "0303-7683395", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Abdurrehman 4 no chungi", phone: "0330-6763446", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Altaf karkhana", phone: "0318-7909055", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Kaku Qasai almasoom", phone: "0307-1486686", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Kamran Radhani Pump", phone: "0304-4146383", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Sultan almadina shop", phone: "0316-7460238", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Hasnain Wapda colony", phone: "0306-6042939", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Mushtaq radhabi pump", phone: "0311-7073024", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Sufi Waqqas khaglan wala mor", phone: "0315-4973534", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Imran Kalyar Chok", phone: "0326-1801520", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Haji Tusawar mainbazar fajro chok", phone: "0318-6093626", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Hafiz shahzad almasoom ada", phone: "0321-6901558", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Mumtaz C3 colony", phone: "0333-6835301", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Shamsi kacha paka mor", phone: "0313-5631349", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Yaseen rehmat ullah kacha paka mor", phone: "0304-8821431", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Aziz 4 no chungi", phone: "0312-4853040", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Noor qari shafi madrssa", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Tahir Bhanja Kundal", phone: "0311-7358948", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Sohail Tufail kundal", phone: "0313-7772125", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Waheed Fakhri Kalyar chok", phone: "0300-3341886", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Ikram 4 no chungi", phone: "0308-0296183", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Mazhar Dhaba chok", phone: "0302-5412370", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Faizi Arain Hotel", phone: "0307-4726271", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Asmatullah Wapda ", phone: "0302-3957116", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Javeed ada", phone: "0333-6836041", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Umar hayat / Khalid usmani", phone: "0311-0704848", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Zakwan c2 colony ", phone: "0304-1955115", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Gull meet / Shani /foji Mumtaz c2 colony ", phone: "0318-4780488", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Fazal Tufail CNG", phone: "0318-7909055", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Muhammad Haneef / Arif Chashlam Colony", phone: "0334-7585488", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Irfan Watto chok", phone: "0301-4966387", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Gulzar Sadedqi Bazar", phone: "0302-2413146", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Kamran kami", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+    { name: "Lajpal Bhorvi main bazar", phone: "0303-7272442", category: "Shop Keepers Contacts", subcategory: "Local Contacts" },
+
+    
 ];
 
 // Predefined contacts to be added under "Chakok Contacts"
@@ -43,12 +135,12 @@ const newChakokContacts = [
     { name: "Hafiz Nazeer", phone: "0343-6893868", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
     { name: "Maqsood", phone: "0302-7979519", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
     { name: "Abid Tanveer", phone: "0306-5392520", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
-    { name: "Ghoos Junaid Pali", phone: "0343-4189959", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
-    { name: "Younas", phone: "0345-5820378", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
+    { name: "Ghoos Junaid Puli", phone: "0343-4189959", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
+    { name: "Younas Khanqa", phone: "0345-5820378", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
     { name: "Riaz 5 Chak", phone: "0347-7847199", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
     { name: "Amjad 5 Chak", phone: "0333-9829784", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
     { name: "Arif Faryad 5 Chak", phone: "0307-4857120", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
-    { name: "Riaz Maraji", phone: "0344-6876157", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
+    { name: "Riaz Mairaji", phone: "0344-6876157", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
     { name: "Sadiq 4 Chak", phone: "0300-4803745", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
     { name: "Mushtaq Goly Wala", phone: "0301-6302330", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
     { name: "Hameed Sultany Wala", phone: "0307-7013270", category: "Shop Keepers Contacts", subcategory: "Chakok Contacts" },
@@ -58,7 +150,7 @@ const newChakokContacts = [
 
 // Predefined contacts to be added under "Employee Contacts"
 const newEmployeeContacts = [
-    { name: "Asim Shah", phone: "0300-7870705", category: "Employee Contacts", subcategory: "None" },
+    { name: "Asim Shah/Tasleem Shah", phone: "0300-7870705", category: "Employee Contacts", subcategory: "None" },
     { name: "Muhammad Ajmal", phone: "0318-6837134", category: "Employee Contacts", subcategory: "None" },
     { name: "Muhammad Ateeq", phone: "0340-7488060", category: "Employee Contacts", subcategory: "None" },
     { name: "Waqas Ahmed Dhoon", phone: "0306-9052240", category: "Employee Contacts", subcategory: "None" },
@@ -71,7 +163,8 @@ const newEmployeeContacts = [
     { name: "Maqsood ul Hassan", phone: "0319-6538656", category: "Employee Contacts", subcategory: "None" },
     { name: "Muhammad Bilal", phone: "0316-7460238", category: "Employee Contacts", subcategory: "None" },
     { name: "Muhammad Irfan", phone: "0310-7878370", category: "Employee Contacts", subcategory: "None" },
-    { name: "Khuram Armani", phone: "0315-2082302", category: "Employee Contacts", subcategory: "None" }
+    { name: "Muhammad Haris", phone: "0309-0295583", category: "Employee Contacts", subcategory: "None" },
+    { name: "Ahtesham", phone: "0320-0956752", category: "Employee Contacts", subcategory: "None" }
 ];
 
 // Add predefined Executive, Shop Keepers, Suppliers, Brokers, Dera Shop Keepers, Local, Chakok, and Employee Contacts to the contact data
