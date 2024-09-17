@@ -1,239 +1,35 @@
-/* Global Styles */
-body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-    color: #343a40;
-}
+/* Custom additions to enhance Bootstrap styles */
 
-/* Container for all sections */
+/* Adjust container padding */
 .container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+    padding: 20px 40px;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    max-width: 1200px;  /* Prevent stretching on larger screens */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* Header */
 h1 {
-    text-align: center;
-    color: #5a6268;
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-/* Section Titles */
-h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #5a6268;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ced4da;
-    padding-bottom: 5px;
-}
-
-/* Form styling */
-form {
-    margin-bottom: 30px;
-}
-
-label {
-    font-size: 16px;
-    font-weight: 500;
-    color: #495057;
-    margin-bottom: 5px;
-    display: inline-block;
-}
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-input:focus, select:focus {
-    border-color: #28a745;
-    outline: none;
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    font-size: 2.5rem;
 }
 
 /* Buttons */
 button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    margin-top: 10px;
+    transition: all 0.3s ease;
 }
 
-button:hover {
-    background-color: #218838;
-}
-
-button:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-}
-
-button img {
-    margin-right: 10px;
-}
-
-/* Call and WhatsApp button styling */
-.call-btn, .whatsapp-btn {
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 10px;
-}
-
+/* Customize call, WhatsApp, and delete buttons */
 .call-btn {
     background-color: #007bff;
-}
-
-.call-btn:hover {
-    background-color: #0056b3;
+    border-color: #007bff;
 }
 
 .whatsapp-btn {
-    background-color: #25D366;
+    background-color: #25d366;
 }
 
-.whatsapp-btn:hover {
-    background-color: #128C7E;
-}
-
-/* Contact List */
-#contact-list div {
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 5px solid #28a745;
-    transition: border-color 0.3s ease;
-}
-
-#contact-list div:hover {
-    border-color: #218838;
-}
-
-#contact-list button {
-    margin-left: 10px;
-}
-
-/* Search Section */
-#search-section {
-    display: none;
-    margin-top: 15px;
-}
-
-#category-search-input {
-    width: calc(100% - 120px); /* Adjust the size for the button */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-#category-search-input:focus {
-    border-color: #28a745;
-    outline: none;
-    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
-}
-
-/* Subcategory Section */
-#shopkeeper-options {
-    margin-top: 20px;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .container {
-        width: 90%;
-    }
-
-    h1 {
-        font-size: 28px;
-    }
-
-    h2 {
-        font-size: 22px;
-    }
-
-    button {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    button {
-        width: 100%;
-        margin-top: 10px;
-        padding: 8px 16px;
-    }
-
-    #contact-list div {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #contact-list button, .call-btn, .whatsapp-btn {
-        width: 100%;
-        margin-top: 8px;
-    }
-
-    #category-search-input {
-        width: calc(100% - 80px); /* Reduce width for smaller screens */
-    }
-}
-
-@media (max-width: 576px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    button {
-        padding: 6px 12px;
-    }
-
-    #category-search-input {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+.delete-btn {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
 }
