@@ -2,12 +2,18 @@
 let contactData = JSON.parse(localStorage.getItem('contactData')) || [];
 let currentCategory = null;  // Track current category
 
-// Helper function to check for duplicate contacts
+// Function to check if a contact already exists
 function isContactExists(phone) {
     return contactData.some(contact => contact.phone === phone);
 }
 
-// Predefined contacts to be added under "Executive Contacts"
+// Function to save a contact
+function saveContact(name, phone, category, subcategory) {
+    contactData.push({ name, phone, category, subcategory });
+    localStorage.setItem('contactData', JSON.stringify(contactData));
+    console.log("Contact saved: ", { name, phone, category, subcategory }); // Debugging log
+}
+
 // Predefined contacts to be added under "Executive Contacts"
 const newExecutiveContacts = [
     { name: "Shabhir Qadri", phone: "+92312-9832611", category: "Executive Contacts", subcategory: "None" },
@@ -139,30 +145,60 @@ const newExecutiveContacts = [
       { name: "Driver Name 1", phone: "+92300-6666661", category: "Drivers Contacts", subcategory: "None" },
       { name: "Driver Name 2", phone: "+92300-6666662", category: "Drivers Contacts", subcategory: "None" }
   ];
-// Add predefined contacts ensuring no duplicates
-Object.values(predefinedContacts).forEach(addUniqueContacts);
 
-// Save the updated contact list to LocalStorage
-localStorage.setItem('contactData', JSON.stringify(contactData));
+// Function to add predefined contacts ensuring no duplicates
+function addUniqueContacts(contacts) {
+    contacts.forEach(contact => {
+        if (!isContactExists(contact.phone)) {
+            saveContact(contact.name, contact.phone, contact.category, contact.subcategory);
+        }
+    });
+}
 
-// Handle form submission
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
+// Add predefined contacts
+addUniqueContacts(newExecutiveContacts);
+addUniqueContacts(newShopKeepersContacts);
+addUniqueContacts(newSuppliersContacts);
+addUniqueContacts(newBrokersContacts);
+addUniqueContacts(newDeraShopKeepersContacts);
+addUniqueContacts(newLocalContacts);
+addUniqueContacts(newChakokContacts);
+addUniqueContacts(newEmployeeContacts);
+addUniqueContacts(newDriversContacts);
 
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const category = document.getElementById("category").value;
-    const subcategory = category === "Shop Keepers Contacts" ? document.getElementById("subcategory").value : "None";
+// Attach event listener to the form submission
+document.getElementById('contact-form').addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent the form from refreshing the page
 
-    if (!isContactExists(phone)) {
-        saveContact(name, phone, category, subcategory);
-    } else {
-        alert("This contact already exists.");
+    // Get input values
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const category = document.getElementById('category').value;
+    const subcategory = document.getElementById('subcategory').value;
+
+    // Validate the inputs
+    if (!name || !phone || !category) {
+        alert("Please fill in all required fields.");
+        return;
     }
 
-    // Clear form fields
-    document.getElementById("contact-form").reset();
-    document.getElementById("subcategory").disabled = true; // Reset subcategory disable
+    // Check if the contact already exists
+    if (isContactExists(phone)) {
+        alert("This contact already exists.");
+        return;
+    }
+
+    // Save contact
+    saveContact(name, phone, category, subcategory);
+
+    // Clear input fields
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('category').value = 'Executive Contacts';
+    document.getElementById('subcategory').value = 'None';
+    document.getElementById('subcategory').disabled = true; // Disable subcategory for non-Shop Keepers
+
+    alert("Contact saved successfully!");
 });
 
 // Show subcategories only for Shop Keepers Contacts
@@ -170,13 +206,6 @@ document.getElementById("category").addEventListener("change", function () {
     const subcategoryElement = document.getElementById("subcategory");
     subcategoryElement.disabled = this.value !== "Shop Keepers Contacts";
 });
-
-// Function to save the contact to LocalStorage
-function saveContact(name, phone, category, subcategory) {
-    contactData.push({ name, phone, category, subcategory });
-    localStorage.setItem('contactData', JSON.stringify(contactData));
-    alert(`Contact saved: ${name}, ${phone}, ${category}, ${subcategory}`);
-}
 
 // Function to view contacts by category or subcategory
 function viewContacts(categoryOrSubcategory) {
@@ -195,13 +224,16 @@ function viewContacts(categoryOrSubcategory) {
     }
 
     filteredContacts.forEach((contact, index) => {
+        const phoneDisplay = contact.phone;  // Keep the original format for display
+        const cleanedPhone = phoneDisplay.replace(/[^0-9]/g, ''); // Clean for WhatsApp
+        
         const contactItem = document.createElement("div");
         contactItem.className = "d-flex justify-content-between align-items-center bg-light p-2 mb-2 border rounded";
         contactItem.innerHTML = `
-            <span>${contact.name} - ${contact.phone}</span>
+            <span>${contact.name} - ${phoneDisplay}</span>
             <div>
-                <a href="tel:${contact.phone}" class="btn btn-primary me-2">Call</a>
-                <a href="https://wa.me/${contact.phone.replace(/^0+/, '').replace(/[^0-9]/g, '')}" class="btn btn-success me-2">WhatsApp</a>
+                <a href="tel:${phoneDisplay}" class="btn btn-primary me-2">Call</a>
+                <a href="https://wa.me/${cleanedPhone}" class="btn btn-success me-2" target="_blank">WhatsApp</a>
                 <button class="btn btn-warning me-2" onclick="editContact(${index})">Edit</button>
                 <button class="btn btn-danger delete-btn" onclick="deleteContact(${index})">Delete</button>
             </div>
@@ -215,6 +247,7 @@ function viewContacts(categoryOrSubcategory) {
     downloadButton.onclick = () => downloadContacts(categoryOrSubcategory, filteredContacts);
     contactList.appendChild(downloadButton);
 }
+
 
 // Function to search contacts within a category
 function searchCategoryContacts() {
@@ -248,23 +281,66 @@ function searchCategoryContacts() {
     });
 }
 
-// Function to edit a contact
 function editContact(index) {
     const contact = contactData[index];
     document.getElementById("name").value = contact.name;
     document.getElementById("phone").value = contact.phone;
     document.getElementById("category").value = contact.category;
+    document.getElementById("subcategory").value = contact.subcategory;
 
     if (contact.category === "Shop Keepers Contacts") {
-        document.getElementById("subcategory").value = contact.subcategory;
         document.getElementById("subcategory").disabled = false;
     } else {
         document.getElementById("subcategory").disabled = true;
     }
 
-    // Remove the contact from the list to allow updating
-    contactData.splice(index, 1);
-    localStorage.setItem('contactData', JSON.stringify(contactData));
+    editingIndex = index; // Store the index of the contact being edited
+
+    // Update the submit button to handle the update
+    document.getElementById('contact-form').onsubmit = function(event) {
+        event.preventDefault(); // Prevent the form from refreshing the page
+
+        // Get input values
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const category = document.getElementById('category').value;
+        const subcategory = document.getElementById('subcategory').value;
+
+        // Validate the inputs
+        if (!name || !phone || !category) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Check if the contact already exists (excluding the one being edited)
+        if (isContactExists(phone) && phone !== contact.phone) {
+            alert("This contact already exists.");
+            return;
+        }
+
+        // Update the contact
+        contactData[editingIndex].name = name;
+        contactData[editingIndex].phone = phone;
+        contactData[editingIndex].category = category;
+        contactData[editingIndex].subcategory = subcategory;
+
+        localStorage.setItem('contactData', JSON.stringify(contactData));
+
+        // Clear input fields
+        document.getElementById('name').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('category').value = 'Executive Contacts';
+        document.getElementById('subcategory').value = 'None';
+        document.getElementById('subcategory').disabled = true;
+
+        alert("Contact updated successfully!");
+
+        // Refresh the contact list
+        viewContacts(currentCategory);
+
+        // Reset the submit event handler
+        document.getElementById('contact-form').onsubmit = null;
+    };
 }
 
 // Function to delete a contact
