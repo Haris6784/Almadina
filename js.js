@@ -7,51 +7,52 @@ function isContactExists(phone) {
     return contactData.some(contact => contact.phone === phone);
 }
 
-// Predefined contacts for each category (this part is retained as it was)
+// Predefined contacts with updated phone numbers
 const predefinedContacts = {
     'Executive Contacts': [
-        { name: "Shabhir Qadri", phone: "0312-9832611", category: "Executive Contacts", subcategory: "None" },
-        { name: "Muneer Nake ", phone: "0300-0000002", category: "Executive Contacts", subcategory: "None" }
+        { name: "Shabhir Qadri", phone: "+92312-9832611", category: "Executive Contacts", subcategory: "None" },
+        { name: "Muneer Nake ", phone: "+92300-0000002", category: "Executive Contacts", subcategory: "None" }
     ],
     'Employee Contacts': [
-        { name: "Asim Shah/Tasleem Shah", phone: "0300-7870705", category: "Employee Contacts", subcategory: "None" },
-        { name: "Muhammad Ajmal", phone: "0318-6837134", category: "Employee Contacts", subcategory: "None" },
-        { name: "Muhammad Ateeq", phone: "0340-7488060", category: "Employee Contacts", subcategory: "None" },
-        { name: "Waqas Ahmed Dhoon", phone: "0306-9052240", category: "Employee Contacts", subcategory: "None" },
-        { name: "Waqas Ahmed Jora", phone: "0301-6067646", category: "Employee Contacts", subcategory: "None" },
-        { name: "Muhammad Fawad Azam", phone: "0304-8523826", category: "Employee Contacts", subcategory: "None" },
-        { name: "Faraz Sadeeqi", phone: "0312-5829431", category: "Employee Contacts", subcategory: "None" },
-        { name: "Syed Najaf Ali Shah", phone: "0342-9329803", category: "Employee Contacts", subcategory: "None" },
-        { name: "Asim Khan", phone: "0305-2443790", category: "Employee Contacts", subcategory: "None" },
-        { name: "Nemat Ullah", phone: "0332-5062164", category: "Employee Contacts", subcategory: "None" },
-        { name: "Maqsood ul Hassan", phone: "0319-6538656", category: "Employee Contacts", subcategory: "None" },
-        { name: "Muhammad Bilal", phone: "0316-7460238", category: "Employee Contacts", subcategory: "None" },
-        { name: "Muhammad Irfan", phone: "0310-7878370", category: "Employee Contacts", subcategory: "None" },
-        { name: "Muhammad Haris", phone: "0309-0295583", category: "Employee Contacts", subcategory: "None" },
-        { name: "Ahtesham", phone: "0320-0956752", category: "Employee Contacts", subcategory: "None" }
+        { name: "Asim Shah/Tasleem Shah", phone: "+92300-7870705", category: "Employee Contacts", subcategory: "None" },
+        { name: "Muhammad Ajmal", phone: "+92318-6837134", category: "Employee Contacts", subcategory: "None" },
+        { name: "Muhammad Ateeq", phone: "+92340-7488060", category: "Employee Contacts", subcategory: "None" },
+        { name: "Waqas Ahmed Dhoon", phone: "+92306-9052240", category: "Employee Contacts", subcategory: "None" },
+        { name: "Waqas Ahmed Jora", phone: "+92301-6067646", category: "Employee Contacts", subcategory: "None" },
+        { name: "Muhammad Fawad Azam", phone: "+92304-8523826", category: "Employee Contacts", subcategory: "None" },
+        { name: "Faraz Sadeeqi", phone: "+92312-5829431", category: "Employee Contacts", subcategory: "None" },
+        { name: "Syed Najaf Ali Shah", phone: "+92342-9329803", category: "Employee Contacts", subcategory: "None" },
+        { name: "Asim Khan", phone: "+92305-2443790", category: "Employee Contacts", subcategory: "None" },
+        { name: "Nemat Ullah", phone: "+92332-5062164", category: "Employee Contacts", subcategory: "None" },
+        { name: "Maqsood ul Hassan", phone: "+92319-6538656", category: "Employee Contacts", subcategory: "None" },
+        { name: "Muhammad Bilal", phone: "+92316-7460238", category: "Employee Contacts", subcategory: "None" },
+        { name: "Muhammad Irfan", phone: "+92310-7878370", category: "Employee Contacts", subcategory: "None" },
+        { name: "Muhammad Haris", phone: "+92309-0295583", category: "Employee Contacts", subcategory: "None" },
+        { name: "Ahtesham", phone: "+92320-0956752", category: "Employee Contacts", subcategory: "None" }
     ],
     'Shop Keepers Contacts': [
-        { name: "Shopkeeper 1", phone: "0300-0000005", category: "Shop Keepers Contacts", subcategory: "None" },
-        { name: "Shopkeeper 2", phone: "0300-0000006", category: "Shop Keepers Contacts", subcategory: "None" }
+        { name: "Shopkeeper 1", phone: "+92300-0000005", category: "Shop Keepers Contacts", subcategory: "None" },
+        { name: "Shopkeeper 2", phone: "+92300-0000006", category: "Shop Keepers Contacts", subcategory: "None" }
     ],
     'Suppliers Contacts': [
-        { name: "Supplier 1", phone: "0300-0000007", category: "Suppliers Contacts", subcategory: "None" },
-        { name: "Supplier 2", phone: "0300-0000008", category: "Suppliers Contacts", subcategory: "None" }
+        { name: "Supplier 1", phone: "+92300-0000007", category: "Suppliers Contacts", subcategory: "None" },
+        { name: "Supplier 2", phone: "+92300-0000008", category: "Suppliers Contacts", subcategory: "None" }
     ],
     'Brokers Numbers': [
-        { name: "Ramzan Shaloli Jazz", phone: "0301-7150540", category: "Brokers Numbers", subcategory: "None" },
-        { name: "Ramzan Shaloli Telenor", phone: "0346-7779039", category: "Brokers Numbers", subcategory: "None" },
-        { name: "Rana Habib Mithu", phone: "0300-2667626", category: "Brokers Numbers", subcategory: "None" }
+        { name: "Ramzan Shaloli Jazz", phone: "+92301-7150540", category: "Brokers Numbers", subcategory: "None" },
+        { name: "Ramzan Shaloli Telenor", phone: "+92346-7779039", category: "Brokers Numbers", subcategory: "None" },
+        { name: "Rana Habib Mithu", phone: "+92300-2667626", category: "Brokers Numbers", subcategory: "None" }
     ],
     'Drivers Contacts': [
-        { name: "Driver 1", phone: "0300-0000011", category: "Drivers Contacts", subcategory: "None" },
-        { name: "Driver 2", phone: "0300-0000012", category: "Drivers Contacts", subcategory: "None" }
+        { name: "Driver 1", phone: "+92300-0000011", category: "Drivers Contacts", subcategory: "None" },
+        { name: "Driver 2", phone: "+92300-0000012", category: "Drivers Contacts", subcategory: "None" }
     ],
     'Local Contacts': [
-        { name: "Driver 1", phone: "0300-0000011", category: "Drivers Contacts", subcategory: "None" },
-        { name: "Driver 2", phone: "0300-0000012", category: "Drivers Contacts", subcategory: "None" }
+        { name: "Driver 1", phone: "+92300-0000011", category: "Drivers Contacts", subcategory: "None" },
+        { name: "Driver 2", phone: "+92300-0000012", category: "Drivers Contacts", subcategory: "None" }
     ]
 };
+
 
 // Add predefined contacts ensuring no duplicates
 Object.values(predefinedContacts).forEach(addUniqueContacts);
